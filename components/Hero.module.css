@@ -1,0 +1,145 @@
+.hero { position: relative; isolation: isolate; padding-top: 140px; padding-bottom: 70px; overflow: hidden; }
+.grid {
+  display: grid; grid-template-columns: 1.25fr 0.75fr;
+  gap: clamp(28px, 5vw, 72px); align-items: center;
+}
+.copy { min-width: 0; }
+
+.status {
+  display: inline-flex; align-items: center; gap: 10px;
+  font: 500 13px var(--f-mono); color: var(--muted);
+  padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px;
+  background: rgba(12, 28, 20, 0.6);
+}
+.status i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: ping 1.8s infinite; }
+@keyframes ping {
+  0% { box-shadow: 0 0 0 0 var(--glow); }
+  70%, 100% { box-shadow: 0 0 0 10px rgba(47, 227, 154, 0); }
+}
+
+.hello { margin-top: 26px; font: 500 18px var(--f-mono); color: var(--accent); }
+
+/* ===== Big name ===== */
+.name {
+  font-size: clamp(44px, 6.4vw, 88px); font-weight: 800;
+  line-height: 0.95; letter-spacing: -0.015em; margin-top: 6px;
+}
+.last {
+  display: block; position: relative; width: fit-content;
+  color: transparent; -webkit-text-stroke: 1.5px var(--accent);
+}
+/* the green fill that sweeps across the outlined name */
+.last::after {
+  content: attr(data-text);
+  position: absolute; left: 0; top: 0;
+  color: var(--accent); -webkit-text-stroke: 0;
+  clip-path: inset(0 100% 0 0);
+  animation: fill 5s cubic-bezier(0.7, 0, 0.3, 1) infinite;
+}
+@keyframes fill {
+  0%, 10% { clip-path: inset(0 100% 0 0); }
+  45%, 65% { clip-path: inset(0 0 0 0); }
+  100% { clip-path: inset(0 0 0 100%); }
+}
+
+.role { margin-top: 22px; font: 500 clamp(20px, 2.6vw, 28px) var(--f-body); min-height: 1.5em; }
+.lede { margin-top: 18px; max-width: 52ch; color: var(--muted); font-size: 18px; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+
+.mini { display: flex; gap: 10px; margin-top: 28px; }
+.mini a {
+  width: 42px; height: 42px; display: grid; place-items: center;
+  border: 1px solid var(--line); border-radius: 12px; color: var(--muted);
+  transition: all 0.25s;
+}
+.mini a:hover { color: var(--accent-ink); background: var(--accent); border-color: var(--accent); transform: translateY(-3px); }
+.mini svg { width: 18px; height: 18px; }
+
+/* ===== Photo (taller than wide) ===== */
+.photoZone {
+  position: relative; justify-self: center;
+  width: min(380px, 100%); aspect-ratio: 4 / 5; max-width: 100%;
+}
+
+/* dashed frame around the photo; the dashes keep moving around it */
+.orbit { position: absolute; inset: -30px; }
+.orbit svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.orbit rect {
+  x: 0.5px; y: 0.5px; width: calc(100% - 1px); height: calc(100% - 1px); rx: 44px;
+  fill: none; stroke: var(--line-strong); stroke-width: 1.2;
+  stroke-dasharray: 5 7;
+  animation: march 1.6s linear infinite;
+}
+@keyframes march { to { stroke-dashoffset: -24; } }
+.orbit b {
+  position: absolute; width: 10px; height: 10px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 14px var(--glow);
+  top: -5px; left: 50%; margin-left: -5px;
+  animation: dotPulse 2.4s ease-in-out infinite;
+}
+@keyframes dotPulse { 50% { transform: scale(1.5); box-shadow: 0 0 22px var(--glow); } }
+.orbit b:nth-of-type(2) { top: auto; bottom: -5px; background: var(--accent-2); animation-delay: -1.2s; }
+
+/* light running around the edge of the photo */
+.border, .glow { position: absolute; inset: -3px; border-radius: 31px; overflow: hidden; }
+.border::before, .glow::before {
+  content: ""; position: absolute; inset: -60%;
+  background: conic-gradient(from 0deg, transparent 0 55%, var(--accent) 78%, var(--accent-2) 90%, transparent 100%);
+  animation: spin 6s linear infinite;
+}
+.glow { filter: blur(22px); opacity: 0.55; }
+
+.photo {
+  position: absolute; inset: 0; margin: 0; z-index: 1;
+  border-radius: 28px; overflow: hidden; background: #000;
+  transition: transform 0.2s ease-out;
+}
+.photo img { width: 100%; height: 100%; object-fit: cover; }
+/* very soft light line moving down the photo */
+.photo::before {
+  content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: linear-gradient(180deg, transparent 0 46%, rgba(47, 227, 154, 0.1) 50%, transparent 54%);
+  background-size: 100% 220%;
+  animation: scan 5s linear infinite;
+}
+@keyframes scan { from { background-position: 0 120%; } to { background-position: 0 -120%; } }
+
+.chip {
+  position: absolute; z-index: 3;
+  font: 500 13px var(--f-mono); padding: 9px 13px; border-radius: 12px;
+  background: rgba(8, 20, 14, 0.9); border: 1px solid var(--line-strong);
+  backdrop-filter: blur(8px); white-space: nowrap;
+  box-shadow: 0 10px 30px -10px #000;
+  animation: bob 5s ease-in-out infinite;
+}
+.chip b { color: var(--accent); font-weight: 500; }
+.c1 { top: 10%; left: -16%; }
+.c2 { bottom: 22%; right: -14%; animation-delay: -2s; }
+.c3 { bottom: -5%; left: 8%; animation-delay: -3.5s; color: var(--accent-2); }
+
+.hint {
+  display: flex; align-items: center; gap: 12px; margin-top: 56px;
+  font: 500 12px var(--f-mono); color: var(--dim); letter-spacing: 0.14em;
+}
+.hint span { width: 22px; height: 36px; border: 1.5px solid var(--dim); border-radius: 12px; position: relative; }
+.hint span::after {
+  content: ""; position: absolute; left: 50%; top: 7px; width: 3px; height: 7px; margin-left: -1.5px;
+  border-radius: 2px; background: var(--accent); animation: wheel 1.6s infinite;
+}
+@keyframes wheel { to { transform: translateY(12px); opacity: 0; } }
+
+@media (max-width: 1100px) {
+  .c1 { left: -8%; }
+  .c2 { right: -6%; }
+}
+@media (max-width: 860px) {
+  .hero { padding-top: 112px; }
+  .grid { grid-template-columns: 1fr; }
+  .photoZone { order: -1; width: min(260px, 66vw); margin: 34px auto 30px; }
+  .orbit { inset: -20px; }
+  .orbit rect { rx: 36px; }
+  .c1 { left: -12%; top: 6%; }
+  .c2 { right: -12%; }
+  .c3 { display: none; }
+  .hint { display: none; }
+}

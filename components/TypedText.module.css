@@ -1,0 +1,6 @@
+.typed { color: var(--accent-2); font-family: var(--f-mono); font-size: 0.9em; }
+.caret {
+  display: inline-block; width: 0.5em; height: 1.05em; margin-left: 3px;
+  background: var(--accent-2); vertical-align: -0.15em;
+  animation: blink 1s steps(1) infinite;
+}

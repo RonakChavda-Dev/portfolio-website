@@ -1,0 +1,17 @@
+.loader {
+  position: fixed; inset: 0; z-index: 100;
+  background: var(--bg);
+  display: grid; place-items: center;
+  transition: opacity 0.5s ease, visibility 0.5s;
+}
+.done { opacity: 0; visibility: hidden; }
+.inner { display: grid; justify-items: center; gap: 18px; }
+.logo { width: 64px; animation: pulse 1s ease-in-out infinite; }
+.bar { width: 180px; height: 2px; background: var(--line); overflow: hidden; border-radius: 2px; }
+.bar i { display: block; height: 100%; width: 40%; background: var(--accent); animation: load 0.9s ease-in-out infinite; }
+.inner small { font: 500 12px var(--f-mono); color: var(--muted); letter-spacing: 0.12em; }
+
+@keyframes load { from { transform: translateX(-100%); } to { transform: translateX(260%); } }
+@keyframes pulse { 50% { filter: drop-shadow(0 0 18px var(--glow)); transform: scale(1.06); } }
+
+@media (prefers-reduced-motion: reduce) { .loader { display: none; } }

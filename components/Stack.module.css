@@ -1,0 +1,14 @@
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 54px; }
+.group { border: 1px solid var(--line); border-radius: var(--r); padding: 26px; background: var(--bg-2); }
+.group h3 { font: 500 13px var(--f-mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.chips span {
+  font: 500 15px var(--f-body); padding: 9px 16px; border-radius: 12px;
+  border: 1px solid var(--line-strong); background: var(--bg);
+  transition: all 0.25s; cursor: default;
+}
+.chips span:hover {
+  background: var(--accent); color: var(--accent-ink); border-color: var(--accent);
+  transform: translateY(-3px) rotate(-2deg); box-shadow: 0 10px 24px -10px var(--glow);
+}
+@media (max-width: 960px) { .grid { grid-template-columns: 1fr; } }

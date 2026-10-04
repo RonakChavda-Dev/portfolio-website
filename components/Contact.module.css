@@ -1,0 +1,31 @@
+.box {
+  position: relative; overflow: hidden;
+  border: 1px solid var(--line-strong); border-radius: 28px;
+  padding: clamp(32px, 6vw, 80px);
+  background: radial-gradient(ellipse at 100% 0%, rgba(47, 227, 154, 0.18), transparent 55%), var(--bg-2);
+}
+.big { font-size: clamp(36px, 6vw, 80px); font-weight: 800; line-height: 1; max-width: 14ch; margin-top: 18px; }
+.big span { color: var(--accent); }
+.logoBg {
+  position: absolute; right: -60px; bottom: -70px; width: min(420px, 60%);
+  opacity: 0.06; pointer-events: none; animation: spin 60s linear infinite;
+}
+
+.socials { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 18px; }
+.social {
+  display: flex; align-items: center; gap: 14px; min-width: 0;
+  padding: 18px 20px; border: 1px solid var(--line-strong); border-radius: 16px;
+  background: var(--bg); transition: all 0.3s;
+}
+.social svg { width: 22px; height: 22px; flex: none; color: var(--accent); transition: color 0.3s; }
+.social div { min-width: 0; }
+.social b { display: block; font: 600 16px var(--f-body); }
+.social small {
+  display: block; font: 400 13px var(--f-mono); color: var(--muted);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.social:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-5px); }
+.social:hover svg, .social:hover b, .social:hover small { color: var(--accent-ink); }
+
+@media (max-width: 960px) { .socials { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .socials { grid-template-columns: 1fr; } }

@@ -1,0 +1,62 @@
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 54px; }
+.grid > div { min-width: 0; }
+.featureWrap { grid-column: 1 / -1; }
+
+.card {
+  position: relative; overflow: hidden; height: 100%;
+  display: flex; flex-direction: column;
+  padding: 28px; border: 1px solid var(--line); border-radius: var(--r);
+  background: var(--bg-2);
+  transition: transform 0.35s, border-color 0.35s, box-shadow 0.35s;
+}
+.card:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 24px 60px -30px var(--glow); }
+
+/* Always on: every project card gently floats up and down, like it's levitating.
+   Each card starts at a different moment so they don't all move together. */
+.card { animation: levitate 6s ease-in-out infinite; }
+.grid > div:nth-child(2) .card { animation-delay: -2s; }
+.grid > div:nth-child(3) .card { animation-delay: -4s; }
+.grid > div:nth-child(4) .card { animation-delay: -1s; }
+@keyframes levitate {
+  0%, 100% { translate: 0 0; box-shadow: 0 18px 40px -30px rgba(0, 0, 0, 0.9); }
+  50% { translate: 0 -12px; box-shadow: 0 34px 50px -34px var(--glow); }
+}
+.card:hover { animation-play-state: paused; }
+
+.feature {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 36px; padding: 36px;
+  background: linear-gradient(135deg, var(--surface), var(--bg-2) 60%);
+}
+.feature > * { min-width: 0; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.card h3 { font-size: 25px; font-weight: 700; margin-top: 18px; }
+.feature h3 { font-size: clamp(32px, 4vw, 48px); }
+.card p { color: var(--muted); margin-top: 10px; font-size: 16px; flex: 1; }
+
+.go { display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; font: 500 14px var(--f-mono); color: var(--accent); }
+.go svg { width: 16px; height: 16px; transition: transform 0.3s; }
+.card:hover .go svg { transform: translate(4px, -4px); }
+
+.num {
+  /* big outlined number, tucked in the bottom-right corner so it never covers the tags */
+  position: absolute; right: 22px; bottom: 18px; line-height: 1; pointer-events: none;
+  font: 800 52px var(--f-display); color: transparent; -webkit-text-stroke: 1px var(--line-strong);
+}
+
+.miniTerm {
+  align-self: center;
+  border: 1px solid var(--line-strong); border-radius: 14px; background: var(--bg);
+  font: 400 13.5px/1.8 var(--f-mono); padding: 18px;
+  overflow-x: auto; white-space: pre;
+}
+.green { color: var(--accent); }
+.lime { color: var(--accent-2); }
+.dim { color: var(--dim); }
+
+@media (max-width: 860px) {
+  .feature { grid-template-columns: 1fr; padding: 28px; }
+}
+@media (max-width: 640px) {
+  .grid { grid-template-columns: 1fr; }
+}

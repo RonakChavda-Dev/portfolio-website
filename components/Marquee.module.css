@@ -1,0 +1,29 @@
+/* outer box hides the tilted strip's ends so nothing sticks out of the page */
+.outer { overflow: hidden; padding-block: 34px; margin-block: 10px 0; }
+.marquee {
+  width: 110%; margin-left: -5%;
+  border-block: 1px solid var(--line);
+  background: var(--bg-2);
+  padding-block: 22px;
+  transform: rotate(-1deg);
+  backface-visibility: hidden;
+}
+.track {
+  display: flex;
+  width: max-content;
+  animation: slide 36s linear infinite;
+}
+.word {
+  display: flex; align-items: center; gap: 44px;
+  padding-right: 44px;
+  font: 700 clamp(20px, 2.6vw, 30px) var(--f-display);
+  letter-spacing: 0;
+  color: var(--fg);
+  white-space: nowrap;
+}
+.word:nth-child(even) { color: var(--accent); }
+.word::after {
+  content: ""; width: 10px; height: 10px; flex: none;
+  background: var(--accent-2); transform: rotate(45deg);
+}
+@keyframes slide { to { transform: translateX(-50%); } }
