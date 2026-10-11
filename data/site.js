@@ -1,5 +1,6 @@
 // All the words and links on the website live here.
 // Change something in this file and the website updates. No need to touch the other files.
+// Tip: words inside *stars* are shown in the fancy slanted font, like *this*.
 
 export const person = {
   name: "Ronak Chavda",
@@ -7,10 +8,6 @@ export const person = {
   lastName: "Chavda",
   location: "Gujarat, India",
   email: "ronakchavda.dev@gmail.com",
-  status: "Open to projects",
-  roles: ["AI agents", "automations", "websites", "developer tools", "browser bots"],
-  intro:
-    "A programmer who turns slow, repeated work into code that runs on its own. I build automation scripts, agentic AI tools, and websites for people who would rather spend their time on something else.",
 };
 
 export const socials = [
@@ -21,102 +18,158 @@ export const socials = [
 ];
 
 export const navLinks = [
-  { label: "About", href: "#about" },
+  { label: "Home", href: "#home" },
   { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
-  { label: "Projects", href: "#projects" },
-  { label: "Stack", href: "#stack" },
-  { label: "Contact", href: "#contact" },
+  { label: "Work", href: "#work" },
+  { label: "About", href: "#about" },
+  { label: "FAQ", href: "#faq" },
 ];
 
-export const marqueeWords = [
-  "Agentic AI", "Automation", "Python", "Web Development",
-  "Browser Bots", "Developer Tools", "Web Scraping", "Next.js",
+/* ---------- Top dark card ---------- */
+export const hero = {
+  hello: "Hey, I'm Ronak",
+  title: "Developer &\n*automation* builder",
+  small: "I build AI agents, automation scripts and websites. Based in Gujarat, India.",
+  buildsWith: ["Python", "JavaScript", "React", "Next.js", "Django", "Git"],
+  floatTags: ["AI agents", "Automation"],
+  // Words on the small spinning circle next to the photo
+  badge: "AI AGENTS • AUTOMATION • WEBSITES • ",
+};
+
+// The grey moving strip under the dark card
+export const toolStrip = [
+  "Python", "JavaScript", "TypeScript", "React", "Next.js", "Node.js",
+  "Django", "Flask", "Docker", "PostgreSQL", "Linux", "Git",
 ];
 
-export const aboutParagraphs = [
-  "I'm <strong>Ronak Chavda</strong>, a developer from <strong>Gujarat, India</strong>. My work sits where code meets everyday tasks: if something is done by hand again and again, I want to write the program that does it instead.",
-  "Most of my time goes into <strong>automation</strong> and <strong>agentic AI</strong>, meaning tools that can read a situation, decide the next step, and act on it. I also build <strong>websites and custom tools</strong> for other people, from small utilities to full web apps.",
-  "I like local-first tools, clean code, and shipping things people actually use. Every project on my GitHub started as a problem I had myself.",
-];
+/* ---------- Big hello text ---------- */
+export const intro = {
+  hello: "Hello!",
+  // The words go from grey to black as you scroll
+  text: "I'm Ronak, a developer from Gujarat, India. I turn slow, repeated work into code that runs on its own: AI agents, automation scripts and websites for people who would rather spend their time on something else.",
+  chips: [
+    { label: "AI agents", color: "#9be22d" },
+    { label: "Automation", color: "#ff8a3d" },
+    { label: "Web scraping", color: "#3d9bff" },
+    { label: "Browser bots", color: "#b07cff" },
+    { label: "Websites", color: "#ff5c8a" },
+    { label: "Dev tools", color: "#1fc7a0" },
+  ],
+};
 
-export const facts = [
-  { value: 5, label: "public repos on GitHub" },
-  { value: 17, label: "languages & tools in my stack" },
-  { value: 3, label: "focus areas: AI, automation, web" },
-];
-
-// Lines shown in the little terminal in the About section.
-// type "cmd" is typed out letter by letter, type "out" just appears.
-export const terminalLines = [
-  { type: "cmd", text: "whoami" },
-  { type: "out", text: "Ronak Chavda, programmer" },
-  { type: "cmd", text: "cat focus.txt" },
-  { type: "out", text: "→ automation scripts & bots", accent: true },
-  { type: "out", text: "→ agentic AI tools", accent: true },
-  { type: "out", text: "→ websites & tools for clients", accent: true },
-  { type: "cmd", text: "echo $LOCATION" },
-  { type: "out", text: "Gujarat, India" },
-  { type: "cmd", text: "./status --now" },
-  { type: "out", text: "● open to new projects", green: true },
-  { type: "out", text: "# say hi on X, LinkedIn or Instagram ↓", dim: true },
-];
-
+/* ---------- What I do (the open/close list) ---------- */
 export const services = [
   {
     icon: "bot",
+    visual: "agent",
     title: "Agentic AI",
-    text: "AI agents that do more than chat. They plan steps, call tools, check results and finish real tasks on their own.",
+    subtitle: "AI that finishes the job",
+    text: "AI agents that do more than chat. They plan the steps, use tools, check their own results and finish real tasks on their own. I also tell you honestly when plain code is the better choice.",
     tags: ["LLM agents", "Tool calling", "Workflows"],
   },
   {
     icon: "bolt",
+    visual: "flow",
     title: "Automation",
-    text: "Scripts and bots that take over the boring parts: file handling, data scraping, browser tasks and desktop clicks.",
+    subtitle: "Scripts that take over the boring parts",
+    text: "Scripts and bots for the work you repeat every day: moving files, collecting data from websites, filling forms, clicking through the same screens again and again.",
     tags: ["Python", "PyAutoGUI", "Scrapers"],
   },
   {
     icon: "screen",
+    visual: "browser",
     title: "Websites & tools",
-    text: "Fast, good-looking websites and custom tools built for clients, from landing pages to full web apps with a backend.",
+    subtitle: "Built for clients, built to last",
+    text: "Fast, good-looking websites and custom tools for clients, from a simple landing page to a full web app with a backend and a database.",
     tags: ["React", "Next.js", "Django"],
   },
 ];
 
+// The two crossing moving bands
+export const ribbons = {
+  one: ["Turning slow work into code", "Agentic AI", "Automation", "Websites"],
+  two: ["Ronak Chavda", "Developer", "Gujarat, India", "Always building"],
+};
+
+/* ---------- How I work ---------- */
 export const steps = [
   { title: "Understand", text: "We talk through the task, what slows you down, and what \"done\" looks like." },
-  { title: "Design", text: "I map the steps, pick the right tools, and plan where AI helps and where plain code is better." },
+  { title: "Plan", text: "I map the steps, pick the right tools, and decide where AI helps and where plain code is better." },
   { title: "Build & test", text: "I write the code and test it on real examples until it works every time, not just once." },
-  { title: "Hand over", text: "You get working software, clear notes on how to use it, and help if anything changes." },
+  { title: "Hand over", text: "You get working software, simple notes on how to use it, and help if anything changes." },
 ];
 
+/* ---------- Projects ---------- */
 const GITHUB = "https://github.com/RonakChavda-Dev";
 
 export const featuredProject = {
   name: "wherewasi",
   url: `${GITHUB}/wherewasi`,
-  tags: ["Featured", "Python", "Developer tool"],
-  text: "A local-first developer tool that rebuilds your coding context after an interruption and tells you where to pick up again. No cloud, no account, it works on your own machine.",
+  type: "Developer tool",
+  tags: ["Python", "Local-first"],
+  text: "A local-first developer tool that rebuilds your coding context after a break and tells you where to pick up again. No cloud, no account, it works on your own machine.",
 };
 
+// "status" is shown on the right side of each row
 export const projects = [
+  {
+    name: "wherewasi",
+    url: `${GITHUB}/wherewasi`,
+    type: "Developer tool",
+    status: "Featured",
+    text: "Rebuilds your coding context after a break, right on your own machine.",
+  },
   {
     name: "Amazon Price Tracker",
     url: GITHUB,
-    tags: ["Python", "BeautifulSoup", "Requests"],
-    text: "A web scraper that watches product prices on Amazon, so you can buy at the right time without checking by hand.",
+    type: "Web scraper",
+    status: "Built",
+    text: "Watches product prices on Amazon, so you can buy at the right time without checking by hand.",
   },
   {
     name: "I'm Not a Robot Beater",
     url: GITHUB,
-    tags: ["In progress", "Browser automation"],
-    wip: true,
-    text: "A bot that plays and beats \"I'm Not a Robot\", the tricky browser game by Neal Agarwal (neal.fun), solving its checks one level at a time.",
+    type: "Browser automation",
+    status: "In progress",
+    text: "A bot that plays and beats \"I'm Not a Robot\", the tricky browser game by Neal Agarwal (neal.fun), one level at a time.",
   },
 ];
+
+/* ---------- About me ---------- */
+export const about = {
+  title: "Just a programmer who hates doing things *twice.*",
+  paragraphs: [
+    "My work sits where code meets everyday tasks: if something is done by hand again and again, I want to write the program that does it instead.",
+    "Most of my time goes into automation and agentic AI. I also build websites and custom tools for other people. Every project on my GitHub started as a problem I had myself.",
+  ],
+};
 
 export const stack = [
   { group: "Languages", items: ["Python", "JavaScript", "TypeScript", "PHP", "HTML", "CSS"] },
   { group: "Frameworks", items: ["React", "Next.js", "Node.js", "Django", "Flask"] },
-  { group: "Tools & platforms", items: ["Git", "GitHub", "Docker", "Linux", "PostgreSQL", "VS Code"] },
+  { group: "Tools", items: ["Git", "GitHub", "Docker", "Linux", "PostgreSQL", "VS Code"] },
+];
+
+/* ---------- Questions & answers ---------- */
+export const faq = [
+  {
+    q: "What do you build?",
+    a: "Mostly AI agents, automation scripts and bots, web scrapers, and websites or small custom tools.",
+  },
+  {
+    q: "Do you use AI for everything?",
+    a: "No. Sometimes plain code is the better fit, and I use whichever one does the job best.",
+  },
+  {
+    q: "What tools do you use?",
+    a: "Mostly Python and JavaScript, with React, Next.js and Django. The full list is in the \"Who am I\" part above.",
+  },
+  {
+    q: "Where can I see your work?",
+    a: "On my GitHub. Every project there started as a problem I had myself.",
+  },
+  {
+    q: "How can I reach you?",
+    a: "Send me an email or a message on X, LinkedIn or Instagram. The links are just below.",
+  },
 ];

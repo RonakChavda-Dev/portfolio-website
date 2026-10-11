@@ -1,0 +1,13 @@
+.wrap { position: relative; z-index: 2; margin-bottom: clamp(-110px, -8vw, -60px); height: clamp(170px, 18vw, 240px); overflow: hidden; display: grid; place-items: center; }
+.band { position: absolute; left: -5%; width: 110%; padding: 16px 0; overflow: hidden; }
+.track { display: flex; width: max-content; animation: slide 50s linear infinite; }
+.track span {
+  display: inline-flex; align-items: center; gap: 22px; padding-right: 22px;
+  font-size: clamp(18px, 2.2vw, 28px); font-weight: 600; letter-spacing: -0.01em; text-transform: uppercase;
+  white-space: nowrap;
+}
+.track svg { width: 18px; height: 18px; }
+.lime { background: var(--lime); color: var(--on-lime); transform: rotate(-3.5deg); box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.3); }
+.dark { background: var(--dark-2); color: #fff; transform: rotate(3deg); }
+.dark .track { animation-direction: reverse; animation-duration: 60s; }
+.dark svg { color: var(--lime); }

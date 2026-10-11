@@ -1,0 +1,39 @@
+.grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 18px; align-items: start; }
+.card {
+  position: sticky; top: 100px; overflow: hidden; isolation: isolate;
+  border-radius: var(--r); padding: clamp(28px, 4vw, 48px); min-height: 380px;
+  display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 30px;
+  background: linear-gradient(150deg, var(--lime-2) 0%, var(--lime) 55%, #a6dc1d 100%);
+  /* text on this green card stays dark in both modes */
+  --ink: #0e100d; --ink-2: #2b3027; --on-ink: #fff; color: var(--ink);
+}
+.card::after {
+  content: ""; position: absolute; z-index: -1; width: 300px; height: 300px; right: -90px; top: -90px;
+  border-radius: 50%; border: 50px solid rgba(255, 255, 255, 0.25); animation: spin 20s linear infinite;
+}
+.small { font: 500 12.5px var(--f-mono); text-transform: uppercase; letter-spacing: 0.08em; }
+.card h2 { font-size: clamp(34px, 4vw, 52px); }
+
+.list { display: flex; flex-direction: column; gap: 10px; }
+.item { background: var(--card); border: 1px solid var(--line); border-radius: 22px; transition: border-color 0.3s; }
+.item.open { border-color: var(--line-strong); }
+.item button {
+  width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  padding: 22px 24px; background: none; border: 0; cursor: pointer; text-align: left;
+  font-size: 17px; font-weight: 500;
+}
+.toggle {
+  flex: none; width: 34px; height: 34px; border-radius: 50%; background: var(--bg);
+  display: grid; place-items: center; transition: transform 0.4s var(--ease), background 0.3s;
+}
+.toggle svg { width: 16px; height: 16px; }
+.open .toggle { transform: rotate(45deg); background: var(--lime); color: var(--on-lime); }
+.body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.45s var(--ease); }
+.open .body { grid-template-rows: 1fr; }
+.body p { overflow: hidden; padding: 0 24px; color: var(--muted); font-size: 15.5px; max-width: 60ch; transition: padding 0.45s var(--ease); }
+.open .body p { padding-bottom: 22px; }
+
+@media (max-width: 860px) {
+  .grid { grid-template-columns: 1fr; }
+  .card { position: static; min-height: 280px; }
+}

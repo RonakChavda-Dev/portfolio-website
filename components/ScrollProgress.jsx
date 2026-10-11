@@ -20,8 +20,7 @@ export default function ScrollProgress() {
       ref={bar}
       style={{
         position: "fixed", top: 0, left: 0, height: 3, width: 0, zIndex: 60,
-        background: "linear-gradient(90deg, var(--accent), var(--accent-2))",
-        boxShadow: "0 0 12px var(--glow)",
+        background: "var(--lime-deep)",
       }}
     />
   );

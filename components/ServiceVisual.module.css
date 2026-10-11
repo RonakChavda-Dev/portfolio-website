@@ -1,0 +1,61 @@
+.box {
+  background: var(--dark); color: #fff; border-radius: 22px; min-height: 260px; padding: 18px;
+  position: relative; overflow: hidden; border: 1px solid var(--dark-edge);
+}
+.bar { display: flex; align-items: center; gap: 6px; padding-bottom: 14px; border-bottom: 1px solid var(--dark-line); }
+.bar i { width: 10px; height: 10px; border-radius: 50%; background: rgba(255, 255, 255, 0.18); }
+.bar span { margin-left: 10px; font: 400 12px var(--f-mono); color: rgba(255, 255, 255, 0.5); }
+
+/* Agent log: each line fades in, then all reset */
+.agent p {
+  font: 400 13.5px/1.5 var(--f-mono); color: rgba(255, 255, 255, 0.8); margin-top: 14px;
+  opacity: 0; animation: line 7s infinite; animation-delay: calc(var(--i) * 0.9s);
+}
+.agent b { display: inline-block; width: 58px; font-weight: 500; color: rgba(255, 255, 255, 0.45); }
+.agent b.lime { color: var(--lime); }
+@keyframes line {
+  0% { opacity: 0; transform: translateY(6px); }
+  6%, 80% { opacity: 1; transform: none; }
+  92%, 100% { opacity: 0; }
+}
+
+/* Flow: three boxes and a running dot */
+.flow { display: flex; flex-direction: column; justify-content: center; gap: 26px; padding: 28px; }
+.track { position: relative; height: 2px; margin: 0 14%; background: rgba(255, 255, 255, 0.12); }
+.runner {
+  position: absolute; top: -5px; left: 0; width: 12px; height: 12px; border-radius: 50%;
+  background: var(--lime); box-shadow: 0 0 18px var(--lime); animation: run 3.2s ease-in-out infinite;
+}
+@keyframes run { 0% { left: 0; } 50% { left: 50%; } 100% { left: 100%; } }
+.nodes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; position: relative; }
+.nodes div {
+  background: var(--dark-2); border: 1px solid var(--dark-line); border-radius: 16px; padding: 12px;
+  font-size: 13.5px; text-align: center;
+}
+.nodes small { display: block; font: 500 11px var(--f-mono); color: rgba(255, 255, 255, 0.45); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
+.nodes .end { border-color: var(--lime); color: var(--lime); }
+.counter { text-align: center; font-size: 14px; color: rgba(255, 255, 255, 0.55); }
+.counter b { color: #fff; font-weight: 500; }
+
+/* Browser: blocks shimmer and pop in */
+.page { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+.page div { border-radius: 8px; background: rgba(255, 255, 255, 0.08); }
+.navl { height: 12px; width: 40%; }
+.heroBlock { display: flex; flex-direction: column; gap: 8px; padding: 18px !important; background: rgba(255, 255, 255, 0.04) !important; }
+.heroBlock div:nth-child(1) { height: 16px; width: 70%; }
+.heroBlock div:nth-child(2) { height: 10px; width: 50%; }
+.heroBlock .btn { height: 22px; width: 90px; border-radius: 999px !important; background: var(--lime) !important; margin-top: 6px; }
+.cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; background: none !important; }
+.cols div { height: 60px; }
+.page > div, .cols div {
+  animation: build 5s var(--ease) infinite;
+}
+.heroBlock { animation-delay: 0.3s !important; }
+.cols div:nth-child(1) { animation-delay: 0.6s; }
+.cols div:nth-child(2) { animation-delay: 0.8s; }
+.cols div:nth-child(3) { animation-delay: 1s; }
+@keyframes build {
+  0% { opacity: 0; transform: translateY(10px); }
+  12%, 85% { opacity: 1; transform: none; }
+  100% { opacity: 0; }
+}

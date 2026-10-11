@@ -1,20 +1,20 @@
 "use client";
-// "How I work": four steps joined by a moving line that grows as you scroll.
+// "How it works": four step cards. A curvy green line draws itself between them as you scroll.
 import { useEffect, useRef } from "react";
 import { steps } from "@/data/site";
 import styles from "./Process.module.css";
 
 export default function Process() {
-  const pipe = useRef(null);
+  const area = useRef(null);
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const update = () => {
-      const el = pipe.current;
+      const el = area.current;
       if (!el) return;
       const r = el.getBoundingClientRect();
       const h = window.innerHeight;
-      const p = Math.min(1, Math.max(0, (h * 0.85 - r.top) / (r.height + h * 0.3)));
+      const p = Math.min(1, Math.max(0, (h * 0.9 - r.top) / (r.height + h * 0.2)));
       el.style.setProperty("--p", reduce ? 1 : p);
     };
     update();
@@ -23,26 +23,35 @@ export default function Process() {
   }, []);
 
   return (
-    <section className="section" id="process">
+    <section className="section band" id="process">
       <div className="wrap">
-        <span className="eyebrow" data-reveal="">How I work</span>
-        <h2 className="h2" data-reveal="" style={{ "--d": "0.1s" }}>
-          From a messy task to a <em>tool that runs itself.</em>
-        </h2>
+        <div className="head-center">
+          <span className="label" data-reveal="">How I work</span>
+          <h2 className="h2" data-reveal="" style={{ "--d": "0.1s" }}>
+            Here&apos;s how it <em>works</em>
+          </h2>
+        </div>
 
-        <div className={styles.pipe} ref={pipe}>
-          <div className={styles.line} aria-hidden="true"><i /></div>
-          {steps.map((s, i) => (
-            <div key={s.title} className={styles.step} data-reveal="" style={{ "--d": `${0.1 + i * 0.15}s` }}>
-              <div className={styles.node} style={{ "--delay": `${i * 0.75}s` }}>
-                {String(i + 1).padStart(2, "0")}
+        <div className={styles.area} ref={area}>
+          <svg className={styles.curve} viewBox="0 0 1000 260" preserveAspectRatio="none" aria-hidden="true">
+            <path
+              pathLength="1"
+              d="M60 120 C 160 -20, 220 40, 300 90 S 420 250, 520 170 S 640 10, 740 90 S 880 230, 960 140"
+            />
+          </svg>
+          <div className={styles.grid}>
+            {steps.map((s, i) => (
+              <div key={s.title} className={styles.cell} data-reveal="" style={{ "--d": `${0.1 + i * 0.12}s` }}>
+                <article className={styles.card} style={{ "--rot": `${i % 2 ? 2 : -2}deg` }}>
+                  <span className={styles.num}>{String(i + 1).padStart(2, "0")}</span>
+                  <div>
+                    <h3>{s.title}</h3>
+                    <p>{s.text}</p>
+                  </div>
+                </article>
               </div>
-              <div>
-                <h3>{s.title}</h3>
-                <p>{s.text}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

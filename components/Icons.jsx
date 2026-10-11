@@ -45,6 +45,22 @@ const paths = {
   arrowUp: <path fill="none" stroke="currentColor" strokeWidth="2" d="M12 19V5M6 11l6-6 6 6" />,
   menu: <path fill="none" stroke="currentColor" strokeWidth="2" d="M4 7h16M4 12h16M4 17h16" />,
   close: <path fill="none" stroke="currentColor" strokeWidth="2" d="M6 6l12 12M18 6 6 18" />,
+  plus: <path fill="none" stroke="currentColor" strokeWidth="2" d="M12 5v14M5 12h14" />,
+  code: <path fill="none" stroke="currentColor" strokeWidth="1.8" d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16" />,
+  spark: <path fill="currentColor" d="M12 2c.6 4.6 2.4 7.4 10 10-7.6 2.6-9.4 5.4-10 10-.6-4.6-2.4-7.4-10-10 7.6-2.6 9.4-5.4 10-10Z" />,
+  chat: (
+    <g fill="none" stroke="currentColor" strokeWidth="1.8">
+      <path d="M4 5h16v11H9l-5 4V5Z" />
+      <path d="M8 10h8M8 13h5" />
+    </g>
+  ),
+  sun: (
+    <g fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+      <circle cx="12" cy="12" r="4.2" />
+      <path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4" />
+    </g>
+  ),
+  moon: <path fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" />,
   bot: (
     <g fill="none" stroke="currentColor" strokeWidth="1.7">
       <path d="M12 8V4H8" />

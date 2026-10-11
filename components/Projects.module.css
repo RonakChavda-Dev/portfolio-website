@@ -1,62 +1,87 @@
-.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 54px; }
-.grid > div { min-width: 0; }
-.featureWrap { grid-column: 1 / -1; }
+.head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
+.head .sub { max-width: 340px; font-size: 15.5px; }
 
-.card {
-  position: relative; overflow: hidden; height: 100%;
-  display: flex; flex-direction: column;
-  padding: 28px; border: 1px solid var(--line); border-radius: var(--r);
-  background: var(--bg-2);
-  transition: transform 0.35s, border-color 0.35s, box-shadow 0.35s;
-}
-.card:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 24px 60px -30px var(--glow); }
-
-/* Always on: every project card gently floats up and down, like it's levitating.
-   Each card starts at a different moment so they don't all move together. */
-.card { animation: levitate 6s ease-in-out infinite; }
-.grid > div:nth-child(2) .card { animation-delay: -2s; }
-.grid > div:nth-child(3) .card { animation-delay: -4s; }
-.grid > div:nth-child(4) .card { animation-delay: -1s; }
-@keyframes levitate {
-  0%, 100% { translate: 0 0; box-shadow: 0 18px 40px -30px rgba(0, 0, 0, 0.9); }
-  50% { translate: 0 -12px; box-shadow: 0 34px 50px -34px var(--glow); }
-}
-.card:hover { animation-play-state: paused; }
-
+/* ----- Featured dark card ----- */
 .feature {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 36px; padding: 36px;
-  background: linear-gradient(135deg, var(--surface), var(--bg-2) 60%);
+  position: relative; display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center;
+  margin-top: 46px; padding: clamp(26px, 4vw, 54px); border-radius: 32px;
+  background: var(--dark); color: #fff; overflow: hidden; isolation: isolate;
+  border: 1px solid var(--dark-edge);
 }
-.feature > * { min-width: 0; }
-
-.tags { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-.card h3 { font-size: 25px; font-weight: 700; margin-top: 18px; }
-.feature h3 { font-size: clamp(32px, 4vw, 48px); }
-.card p { color: var(--muted); margin-top: 10px; font-size: 16px; flex: 1; }
-
-.go { display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; font: 500 14px var(--f-mono); color: var(--accent); }
-.go svg { width: 16px; height: 16px; transition: transform 0.3s; }
-.card:hover .go svg { transform: translate(4px, -4px); }
-
-.num {
-  /* big outlined number, tucked in the bottom-right corner so it never covers the tags */
-  position: absolute; right: 22px; bottom: 18px; line-height: 1; pointer-events: none;
-  font: 800 52px var(--f-display); color: transparent; -webkit-text-stroke: 1px var(--line-strong);
+.feature::before {
+  content: ""; position: absolute; z-index: -1; width: 480px; height: 480px; right: -80px; bottom: -200px;
+  border-radius: 50%; background: radial-gradient(circle, rgba(200, 244, 58, 0.2), transparent 65%);
+  transition: transform 0.8s var(--ease);
 }
-
-.miniTerm {
-  align-self: center;
-  border: 1px solid var(--line-strong); border-radius: 14px; background: var(--bg);
-  font: 400 13.5px/1.8 var(--f-mono); padding: 18px;
-  overflow-x: auto; white-space: pre;
+.feature:hover::before { transform: scale(1.3); }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tags span {
+  font-size: 12.5px; padding: 5px 12px; border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08); color: rgba(255, 255, 255, 0.8);
 }
-.green { color: var(--accent); }
-.lime { color: var(--accent-2); }
-.dim { color: var(--dim); }
+.tags .tagLime { background: var(--lime); color: var(--on-lime); font-weight: 600; }
+.fCopy h3 { font-size: clamp(42px, 6vw, 80px); margin-top: 22px; letter-spacing: -0.045em; }
+.fCopy p { color: rgba(255, 255, 255, 0.65); margin-top: 16px; max-width: 46ch; }
+
+.term {
+  white-space: pre; font: 400 14px/1.85 var(--f-mono); color: rgba(255, 255, 255, 0.85);
+  background: var(--dark-2); border: 1px solid var(--dark-line); border-radius: 20px; padding: 24px;
+  overflow: hidden; margin-top: 70px; transform: rotate(2deg); transition: transform 0.6s var(--ease);
+}
+.feature:hover .term { transform: rotate(0); }
+.dim { color: rgba(255, 255, 255, 0.4); }
+.lime { color: var(--lime); }
+
+.badge {
+  position: absolute; top: 24px; right: 24px; width: 108px; height: 108px; border-radius: 50%;
+  background: var(--lime); color: var(--on-lime); display: grid; place-items: center;
+  transition: transform 0.5s var(--ease);
+}
+.badge svg { position: absolute; inset: 0; width: 100%; height: 100%; animation: spin 14s linear infinite; }
+.badge text { font: 600 10.5px var(--f-sans); letter-spacing: 0.12em; fill: var(--on-lime); }
+.badge > svg:last-child { position: static; width: 26px; height: 26px; animation: none; }
+.feature:hover .badge { transform: scale(1.08); }
+
+/* ----- List ----- */
+.list { margin-top: 40px; border-top: 1px solid var(--ink); }
+.listHead, .row { display: grid; grid-template-columns: 60px 1.6fr 1fr 0.8fr 48px; gap: 16px; align-items: center; }
+.listHead { padding: 12px 16px; font: 500 12px var(--f-mono); color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; border-bottom: 1px solid var(--line); }
+.row {
+  position: relative; padding: 22px 16px; border-bottom: 1px solid var(--line); isolation: isolate;
+}
+.row::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; background: var(--lime); border-radius: 14px;
+  transform: scaleY(0.2); opacity: 0; transition: transform 0.4s var(--ease), opacity 0.3s;
+}
+.row:hover::before, .row:focus-visible::before { transform: none; opacity: 1; }
+/* on the green hover, keep the text dark in both modes */
+.row:hover, .row:focus-visible { --ink: #0e100d; --ink-2: #2b3027; --muted: #3f443c; --card: #fff; --line: rgba(14, 16, 13, 0.12); --line-strong: rgba(14, 16, 13, 0.25); --pop-bg: #0e100d; --pop-fg: #c8f43a; color: var(--ink); }
+.n { font: 500 13px var(--f-mono); color: var(--muted); }
+.n svg { width: 20px; height: 20px; color: var(--ink); }
+.name { font-size: clamp(20px, 2.2vw, 28px); font-weight: 500; letter-spacing: -0.02em; display: flex; flex-direction: column; }
+.name small {
+  font-size: 14.5px; font-weight: 400; color: var(--ink-2); letter-spacing: 0;
+  max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.45s var(--ease), opacity 0.3s, margin 0.3s;
+}
+.row:hover .name small, .row:focus-visible .name small { max-height: 80px; opacity: 1; margin-top: 6px; }
+.type { color: var(--muted); font-size: 15px; }
+.row:hover .type, .row:hover .n { color: var(--ink); }
+.status { justify-self: start; font-size: 13px; font-weight: 500; padding: 5px 12px; border-radius: 999px; background: var(--card); border: 1px solid var(--line); }
+.status.wip::before { content: "● "; color: #ff8a3d; }
+.go {
+  width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line-strong);
+  display: grid; place-items: center; transition: transform 0.4s var(--ease), background 0.3s, color 0.3s;
+}
+.go svg { width: 18px; height: 18px; }
+.row:hover .go { background: var(--pop-bg); color: var(--pop-fg); transform: rotate(45deg); border-color: var(--pop-bg); }
+.more .name { font-size: 18px; }
 
 @media (max-width: 860px) {
-  .feature { grid-template-columns: 1fr; padding: 28px; }
-}
-@media (max-width: 640px) {
-  .grid { grid-template-columns: 1fr; }
+  .feature { grid-template-columns: 1fr; padding-top: 140px; }
+  .term { font-size: 12.5px; transform: none; margin-top: 0; }
+  .listHead { display: none; }
+  .row { grid-template-columns: 40px 1fr 44px; padding: 20px 6px; }
+  .type, .status { display: none; }
+  .name small { max-height: none; opacity: 1; margin-top: 6px; }
+  .more .type { display: none; }
 }

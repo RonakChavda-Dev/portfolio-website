@@ -1,77 +1,51 @@
-// The first thing people see: name, photo, short intro and buttons.
-import Image from "next/image";
-import { person, socials } from "@/data/site";
+// The first thing people see: a big dark card with the name and buttons on the left,
+// and the photo on the right.
+import { hero, person } from "@/data/site";
+import Fancy from "./Fancy";
 import Icon from "./Icons";
-import NetworkCanvas from "./NetworkCanvas";
-import TypedText from "./TypedText";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
-  const mini = socials.filter((s) => s.icon !== "github");
-
   return (
     <header className={styles.hero} id="home">
-      <NetworkCanvas />
-      <div className={`wrap ${styles.grid}`}>
-        <div className={styles.copy}>
-          <div className={styles.status}><i />{person.status} · {person.location}</div>
-          <p className={styles.hello}>&gt; hello, world. I&apos;m</p>
-          <h1 className={styles.name}>
-            {person.firstName}
-            {/* Outlined last name that fills with green, again and again */}
-            <span className={styles.last} data-text={person.lastName}>{person.lastName}</span>
-          </h1>
-          <p className={styles.role}>
-            I build <TypedText words={person.roles} />
-          </p>
-          <p className={styles.lede}>{person.intro}</p>
-
-          <div className={styles.cta}>
-            <a href="#projects" className="btn btn-solid magnetic">
-              See my work <Icon name="arrowRight" />
-            </a>
-            <a href={socials[3].url} target="_blank" rel="noopener" className="btn btn-ghost magnetic">
-              <Icon name="github" /> GitHub
-            </a>
-          </div>
-
-          <div className={styles.mini}>
-            {mini.map((s) => (
-              <a key={s.name} href={s.url} target="_blank" rel="noopener" aria-label={s.name}>
-                <Icon name={s.icon} />
-              </a>
-            ))}
-            <a href={`mailto:${person.email}`} aria-label="Email">
-              <Icon name="mail" />
-            </a>
-          </div>
-
-          <div className={styles.hint}><span />SCROLL TO EXPLORE</div>
-        </div>
-
-        {/* Photo: a tall rectangle with a light running around its edge,
-            and a dashed frame with moving dashes around it */}
-        <div className={styles.photoZone} data-tilt="">
-          <div className={styles.orbit} aria-hidden="true">
-            {/* dashed outline whose dashes keep moving around the photo */}
-            <svg><rect /></svg>
-            <b /><b />
-          </div>
+      <div className="wrap">
+        <div className={styles.card}>
           <div className={styles.glow} aria-hidden="true" />
-          <div className={styles.border} aria-hidden="true" />
-          <figure className={styles.photo} data-tilt-target="">
-            <Image
-              src="/images/ronak-portrait.jpg"
-              alt="Portrait of Ronak Chavda"
-              width={800}
-              height={1000}
-              priority
-              sizes="(max-width: 860px) 260px, 380px"
-            />
-          </figure>
-          <div className={`${styles.chip} ${styles.c1}`}><b>✓</b> agent.run()</div>
-          <div className={`${styles.chip} ${styles.c2}`}>&lt;/&gt; Python · JS</div>
-          <div className={`${styles.chip} ${styles.c3}`}>⚡ automating…</div>
+
+          <div className={styles.copy}>
+            <p className={styles.hello}>{hero.hello}</p>
+            <h1 className={styles.title}><Fancy text={hero.title} /></h1>
+            <div className={styles.cta}>
+              <a href="#contact" className="btn btn-lime magnetic">
+                Say hello <span className="arrow"><Icon name="arrowRight" /></span>
+              </a>
+              <a href="#work" className={styles.ghost}>See my work</a>
+            </div>
+          </div>
+
+          {/* Photo on the right. Its edges fade softly into the dark card. The mouse makes it tilt a little. */}
+          <div className={styles.visual} data-tilt="">
+            <figure className={styles.photo} data-tilt-target="">
+              <img src="/images/ronak-hero.jpg" alt={`Portrait of ${person.name}`} width="900" height="1599" />
+            </figure>
+
+            <span className={`${styles.float} ${styles.f1}`}>{hero.floatTags[0]}</span>
+            <span className={`${styles.float} ${styles.f2}`}>{hero.floatTags[1]}</span>
+
+            {/* Small spinning circle with words */}
+            <span className={styles.badge} aria-hidden="true">
+              <svg viewBox="0 0 100 100">
+                <defs><path id="heroCircle" d="M50 50 m-36 0 a36 36 0 1 1 72 0 a36 36 0 1 1 -72 0" /></defs>
+                <text><textPath href="#heroCircle">{hero.badge}</textPath></text>
+              </svg>
+              <Icon name="spark" />
+            </span>
+
+          </div>
+
+          <div className={styles.bottom}>
+            <p className={styles.small}>{hero.small}</p>
+          </div>
         </div>
       </div>
     </header>

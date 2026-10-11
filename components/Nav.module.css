@@ -1,36 +1,65 @@
-.nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
-  padding-top: env(safe-area-inset-top, 0px);
-  border-bottom: 1px solid transparent;
-  transition: background 0.3s, border-color 0.3s;
+.nav { position: fixed; inset: 0 0 auto; z-index: 50; padding: 14px 0; }
+/* soft fade behind the menu once you scroll, so page text doesn't clash with it */
+.nav::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: var(--glass); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+  opacity: 0; transition: opacity 0.3s;
 }
-.scrolled { background: rgba(5, 13, 9, 0.75); backdrop-filter: blur(14px); border-color: var(--line); }
-.row { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 16px; }
+.scrolled::before { opacity: 1; }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 16px; }
+.logo {
+  width: 42px; height: 42px; border-radius: 50%; background: #0e100d; border: 1px solid var(--dark-edge);
+  display: grid; place-items: center; transition: transform 0.4s var(--ease);
+}
+.logo img { width: 20px; }
+.brand:hover .logo { transform: rotate(-12deg) scale(1.05); }
+.brandName { transition: opacity 0.3s; }
 
-.brand { display: flex; align-items: center; gap: 12px; font: 700 17px var(--f-display); }
-.brand img { width: 30px; transition: transform 0.5s; }
-.brand:hover img { transform: rotate(-12deg) scale(1.1); }
+.links {
+  display: flex; gap: 4px; padding: 5px;
+  background: var(--glass); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--line); border-radius: 999px;
+  position: absolute; left: 50%; transform: translateX(-50%);
+}
+.links a {
+  padding: 8px 16px; border-radius: 999px; font-size: 14.5px; font-weight: 500; color: var(--ink-2);
+  transition: background 0.25s, color 0.25s;
+}
+.links a:hover { background: var(--hover); color: var(--ink); }
+.links a.active { background: var(--lime); color: var(--on-lime); }
+.mobileTalk { display: none; }
 
-.links { display: flex; gap: 6px; font: 500 14px var(--f-body); }
-.links a { padding: 8px 14px; border-radius: 999px; color: var(--muted); transition: color 0.2s, background 0.2s; }
-.links a:hover { color: var(--fg); background: var(--surface); }
-.links a.active { color: var(--accent); background: var(--surface); }
+.talk {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 18px; border-radius: 999px; font-size: 14.5px; font-weight: 500;
+  background: var(--glass); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--line-strong); transition: background 0.25s, color 0.25s;
+}
+.talk svg { width: 17px; height: 17px; }
+.talk:hover { background: var(--ink); color: var(--on-ink); }
 
+.right { display: flex; align-items: center; gap: 8px; }
 .menuBtn {
-  display: none; place-items: center;
-  width: 44px; height: 44px; border-radius: 12px; cursor: pointer;
-  background: none; border: 1px solid var(--line-strong); color: var(--fg);
+  display: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line-strong); color: var(--ink);
+  background: var(--glass); backdrop-filter: blur(14px); place-items: center; cursor: pointer;
 }
-.menuBtn svg { width: 20px; height: 20px; }
 
-@media (max-width: 860px) {
-  .links {
-    position: fixed; inset: 72px 12px auto 12px;
-    flex-direction: column; padding: 10px;
-    background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r);
-    display: none;
-  }
-  .links.open { display: flex; }
+/* Once you scroll down, hide the name text so the bar stays clean */
+.scrolled .brandName { opacity: 0; pointer-events: none; }
+
+@media (max-width: 900px) {
+  .talk { display: none; }
   .menuBtn { display: grid; }
-  .hire { display: none; }
+  .brandName { opacity: 1; }
+  .links {
+    position: fixed; top: 70px; left: var(--gut); right: var(--gut); transform: translateY(-12px);
+    flex-direction: column; padding: 10px; border-radius: 24px; background: var(--glass-solid);
+    box-shadow: 0 30px 60px -20px var(--shadow);
+    opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s var(--ease);
+  }
+  .links.open { opacity: 1; pointer-events: auto; transform: none; }
+  .links a { padding: 14px 18px; font-size: 17px; }
+  .mobileTalk { display: block; background: var(--ink); color: var(--on-ink) !important; text-align: center; margin-top: 6px; }
 }

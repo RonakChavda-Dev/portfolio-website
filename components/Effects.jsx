@@ -2,7 +2,7 @@
 // Small moving touches for the whole page:
 // 1. Things marked data-reveal slide in when you scroll to them.
 // 2. Buttons marked "magnetic" lean toward the mouse.
-// 3. Cards marked data-spotlight get a soft green light under the mouse.
+// 3. The top photo gently tilts toward the mouse.
 // This file draws nothing itself.
 import { useEffect } from "react";
 
@@ -11,13 +11,17 @@ export default function Effects() {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const cleanups = [];
 
+    // Tell the safety timer in app/layout.js that the animations started fine
+    window.__fxReady = true;
+
     // 1. Slide in on scroll
+    const show = (el) => { el.setAttribute("data-shown", ""); el.classList.add("in"); };
     const items = document.querySelectorAll("[data-reveal]");
     const observer = new IntersectionObserver(
       (entries) =>
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("in");
+            show(entry.target);
             observer.unobserve(entry.target);
           }
         }),
@@ -25,7 +29,7 @@ export default function Effects() {
     );
     items.forEach((el) => {
       // Anything already on screen shows right away
-      if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add("in");
+      if (el.getBoundingClientRect().top < window.innerHeight) show(el);
       else observer.observe(el);
     });
     cleanups.push(() => observer.disconnect());
@@ -71,17 +75,6 @@ export default function Effects() {
         });
       });
     }
-
-    // 3. Spotlight on cards
-    document.querySelectorAll("[data-spotlight]").forEach((card) => {
-      const move = (e) => {
-        const r = card.getBoundingClientRect();
-        card.style.setProperty("--mx", e.clientX - r.left + "px");
-        card.style.setProperty("--my", e.clientY - r.top + "px");
-      };
-      card.addEventListener("pointermove", move);
-      cleanups.push(() => card.removeEventListener("pointermove", move));
-    });
 
     return () => cleanups.forEach((fn) => fn());
   }, []);

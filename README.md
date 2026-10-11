@@ -26,14 +26,16 @@ To stop it, click the black window and press `Ctrl + C`.
 
 ## How to change the words, links or projects
 
-Open **`data/site.js`**. All the text, social links, projects and skills are written there.
+Open **`data/site.js`**. All the text, social links, projects, skills, and questions & answers are written there.
 Change them, save the file, and the website updates by itself.
+
+- Words inside *stars* (like `*happen*`) are shown in the slanted fancy font.
 
 ## How to change the photo or logo
 
 Replace the files inside **`public/images/`** with new ones that have the **same names**:
 
-- `ronak-portrait.jpg` – the photo (a tall picture, 4 wide by 5 high, works best)
+- `ronak-hero.jpg` – the photo (a tall picture with a dark background works best; it is used in the top card and, in black and white, in "Who am I")
 - `logo-white.png` – the white logo
 - `logo-green.png` – the green logo (loading screen)
 

@@ -1,17 +1,10 @@
 .loader {
-  position: fixed; inset: 0; z-index: 100;
-  background: var(--bg);
+  position: fixed; inset: 0; z-index: 100; background: var(--dark);
   display: grid; place-items: center;
-  transition: opacity 0.5s ease, visibility 0.5s;
+  transition: transform 0.9s cubic-bezier(0.7, 0, 0.2, 1);
 }
-.done { opacity: 0; visibility: hidden; }
-.inner { display: grid; justify-items: center; gap: 18px; }
-.logo { width: 64px; animation: pulse 1s ease-in-out infinite; }
-.bar { width: 180px; height: 2px; background: var(--line); overflow: hidden; border-radius: 2px; }
-.bar i { display: block; height: 100%; width: 40%; background: var(--accent); animation: load 0.9s ease-in-out infinite; }
-.inner small { font: 500 12px var(--f-mono); color: var(--muted); letter-spacing: 0.12em; }
-
-@keyframes load { from { transform: translateX(-100%); } to { transform: translateX(260%); } }
-@keyframes pulse { 50% { filter: drop-shadow(0 0 18px var(--glow)); transform: scale(1.06); } }
-
+.logo { width: 64px; animation: pop 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+@keyframes pop { from { opacity: 0; transform: scale(0.6) rotate(-20deg); } }
+.done { transform: translateY(-100%); pointer-events: none; }
+.done .logo { opacity: 0; transition: opacity 0.3s; }
 @media (prefers-reduced-motion: reduce) { .loader { display: none; } }

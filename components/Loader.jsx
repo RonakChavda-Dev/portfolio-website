@@ -1,5 +1,5 @@
 "use client";
-// The short loading screen with the pulsing logo.
+// The short opening screen: the logo appears, then the dark screen slides up and away.
 import { useEffect, useState } from "react";
 import styles from "./Loader.module.css";
 
@@ -7,17 +7,13 @@ export default function Loader() {
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setDone(true), 900);
+    const timer = setTimeout(() => setDone(true), 800);
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <div className={`${styles.loader} ${done ? styles.done : ""}`} aria-hidden="true">
-      <div className={styles.inner}>
-        <img src="/images/logo-green.png" alt="" className={styles.logo} />
-        <div className={styles.bar}><i /></div>
-        <small>BOOTING AGENT…</small>
-      </div>
+      <img src="/images/logo-white.png" alt="" className={styles.logo} />
     </div>
   );
 }

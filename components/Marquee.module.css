@@ -1,29 +1,14 @@
-/* outer box hides the tilted strip's ends so nothing sticks out of the page */
-.outer { overflow: hidden; padding-block: 34px; margin-block: 10px 0; }
-.marquee {
-  width: 110%; margin-left: -5%;
-  border-block: 1px solid var(--line);
-  background: var(--bg-2);
-  padding-block: 22px;
-  transform: rotate(-1deg);
-  backface-visibility: hidden;
+.outer {
+  overflow: hidden; padding: 34px 0 10px;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
 }
-.track {
-  display: flex;
-  width: max-content;
-  animation: slide 36s linear infinite;
-}
+.track { display: flex; width: max-content; animation: slide 40s linear infinite; }
+.outer:hover .track { animation-play-state: paused; }
 .word {
-  display: flex; align-items: center; gap: 44px;
-  padding-right: 44px;
-  font: 700 clamp(20px, 2.6vw, 30px) var(--f-display);
-  letter-spacing: 0;
-  color: var(--fg);
-  white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 10px; padding-right: 48px;
+  font-size: clamp(20px, 2.2vw, 26px); font-weight: 600; letter-spacing: -0.02em; color: var(--faint);
+  transition: color 0.3s;
 }
-.word:nth-child(even) { color: var(--accent); }
-.word::after {
-  content: ""; width: 10px; height: 10px; flex: none;
-  background: var(--accent-2); transform: rotate(45deg);
-}
-@keyframes slide { to { transform: translateX(-50%); } }
+.word:hover { color: var(--ink); }
+.word svg { width: 16px; height: 16px; color: var(--faint); }
