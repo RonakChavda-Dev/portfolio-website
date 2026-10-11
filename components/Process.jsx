@@ -23,7 +23,7 @@ export default function Process() {
   }, []);
 
   return (
-    <section className="section band" id="process">
+    <section className="section band band-flat-top" id="process">
       <div className="wrap">
         <div className="head-center">
           <span className="label" data-reveal="">How I work</span>

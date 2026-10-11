@@ -192,3 +192,6 @@ em, .serif {
 @media (max-width: 900px) {
   html, body { overflow-x: hidden; max-width: 100%; }
 }
+
+/* "How I work" starts right under the ribbons, so its top edge is straight */
+.band.band-flat-top { border-top-left-radius: 0; border-top-right-radius: 0; padding-top: clamp(50px, 7vw, 100px); }

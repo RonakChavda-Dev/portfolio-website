@@ -1,4 +1,10 @@
-.wrap { position: relative; z-index: 2; margin-bottom: clamp(-110px, -8vw, -60px); height: clamp(170px, 18vw, 240px); overflow: hidden; display: grid; place-items: center; }
+/* The top half is the page color and the bottom half is the dark band color,
+   so the ribbons sit exactly on the edge where "How I work" begins. No gaps. */
+.wrap {
+  position: relative; z-index: 2; height: clamp(170px, 18vw, 240px); overflow: hidden;
+  display: grid; place-items: center;
+  background: linear-gradient(to bottom, var(--bg) 50%, var(--band) 50%);
+}
 .band { position: absolute; left: -5%; width: 110%; padding: 16px 0; overflow: hidden; }
 .track { display: flex; width: max-content; animation: slide 50s linear infinite; }
 .track span {
