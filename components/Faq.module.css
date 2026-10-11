@@ -3,14 +3,15 @@
   position: sticky; top: 100px; overflow: hidden; isolation: isolate;
   border-radius: var(--r); padding: clamp(28px, 4vw, 48px); min-height: 380px;
   display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 30px;
-  background: linear-gradient(150deg, var(--lime-2) 0%, var(--lime) 55%, #a6dc1d 100%);
+  /* the soft white ring in the top-right corner is painted as part of the card's background,
+     so it can never slip outside the card */
+  background:
+    radial-gradient(circle at 92% 8%, transparent 0 100px, rgba(255, 255, 255, 0.25) 101px 150px, transparent 151px),
+    linear-gradient(150deg, var(--lime-2) 0%, var(--lime) 55%, #a6dc1d 100%);
   /* text on this green card stays dark in both modes */
   --ink: #0e100d; --ink-2: #2b3027; --on-ink: #fff; color: var(--ink);
 }
-.card::after {
-  content: ""; position: absolute; z-index: -1; width: 300px; height: 300px; right: -90px; top: -90px;
-  border-radius: 50%; border: 50px solid rgba(255, 255, 255, 0.25); animation: spin 20s linear infinite;
-}
+
 .small { font: 500 12.5px var(--f-mono); text-transform: uppercase; letter-spacing: 0.08em; }
 .card h2 { font-size: clamp(34px, 4vw, 52px); }
 
