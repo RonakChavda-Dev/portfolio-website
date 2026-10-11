@@ -77,9 +77,10 @@
 .more .name { font-size: 18px; }
 
 @media (max-width: 860px) {
-  .feature { grid-template-columns: 1fr; gap: 26px; padding-top: 104px; }
-  .badge { width: 80px; height: 80px; top: 18px; right: 18px; }
-  .badge text { font-size: 13px; }
+  .feature { grid-template-columns: 1fr; gap: 26px; }
+  .badge { width: 84px; height: 84px; top: 20px; right: 20px; }
+  /* tags sit next to the round badge and wrap onto two lines */
+  .tags { max-width: calc(100% - 96px); min-height: 70px; align-content: flex-start; }
   .term { font-size: 12.5px; transform: none; margin-top: 0; }
   .listHead { display: none; }
   .row { grid-template-columns: 40px 1fr 44px; padding: 20px 6px; }
