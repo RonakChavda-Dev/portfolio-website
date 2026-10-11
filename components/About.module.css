@@ -42,7 +42,8 @@
 
 @media (max-width: 860px) {
   .grid { grid-template-columns: 1fr; }
-  .photoCard { position: static; max-width: 420px; }
+  .photoCard { position: static; width: 100%; max-width: 420px; margin-inline: auto; text-align: center; }
+  .who { justify-content: center; }
   .tRow { grid-template-columns: 1fr auto; }
   .tRow span:nth-child(2) { display: none; }
 }

@@ -42,7 +42,7 @@
 :global([data-theme="dark"]) .glow { opacity: 0.4; }
 
 /* Phones: smaller tiles on a tighter ring, so the top doesn't feel crowded */
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .arc { height: 150px; }
   .ring { --R: 230px; top: calc(40px + var(--R)); }
   .ring span { width: 56px; height: 56px; left: -28px; top: -28px; border-radius: 16px; }

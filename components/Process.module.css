@@ -23,6 +23,8 @@
 @media (max-width: 900px) {
   .grid { grid-template-columns: 1fr 1fr; }
   .curve { display: none; }
+  .cell:nth-child(even) { margin-top: 0; }
+  .card { min-height: 0; transform: none; }
 }
 @media (max-width: 560px) {
   .grid { grid-template-columns: 1fr; }
