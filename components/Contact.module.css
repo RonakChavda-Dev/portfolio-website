@@ -40,3 +40,13 @@
 
 /* a softer green light in dark mode */
 :global([data-theme="dark"]) .glow { opacity: 0.4; }
+
+/* Phones: smaller tiles on a tighter ring, so the top doesn't feel crowded */
+@media (max-width: 600px) {
+  .arc { height: 150px; }
+  .ring { --R: 230px; top: calc(40px + var(--R)); }
+  .ring span { width: 56px; height: 56px; left: -28px; top: -28px; border-radius: 16px; }
+  .ring svg { width: 22px; height: 22px; }
+  .big { font-size: clamp(44px, 13vw, 64px); }
+  .sub { font-size: 16px; }
+}

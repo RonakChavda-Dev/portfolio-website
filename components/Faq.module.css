@@ -35,5 +35,5 @@
 
 @media (max-width: 860px) {
   .grid { grid-template-columns: 1fr; }
-  .card { position: static; min-height: 280px; }
+  .card { position: relative; top: auto; min-height: 280px; }
 }

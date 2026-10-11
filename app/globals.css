@@ -185,3 +185,10 @@ em, .serif {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   .js [data-reveal] { opacity: 1; transform: none; }
 }
+
+/* ===== Phones and small tablets =====
+   Stop the page from ever sliding sideways. (Not used on big screens because it
+   would stop the photo and question cards from staying in place while you scroll.) */
+@media (max-width: 900px) {
+  html, body { overflow-x: hidden; max-width: 100%; }
+}

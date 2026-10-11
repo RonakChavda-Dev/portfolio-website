@@ -55,7 +55,7 @@
   .brandName { opacity: 1; }
   .links {
     position: fixed; top: 70px; left: var(--gut); right: var(--gut); transform: translateY(-12px);
-    flex-direction: column; padding: 10px; border-radius: 24px; background: var(--glass-solid);
+    flex-direction: column; padding: 10px; border-radius: 24px; background: var(--card); border-color: var(--line-strong);
     box-shadow: 0 30px 60px -20px var(--shadow);
     opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s var(--ease);
   }

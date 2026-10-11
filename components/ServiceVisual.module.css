@@ -59,3 +59,12 @@
   12%, 85% { opacity: 1; transform: none; }
   100% { opacity: 0; }
 }
+
+/* Phones: slightly smaller text so the lines fit */
+@media (max-width: 600px) {
+  .box { min-height: 220px; padding: 14px; }
+  .agent p { font-size: 12px; margin-top: 10px; }
+  .agent b { width: 48px; }
+  .flow { padding: 18px; gap: 18px; }
+  .nodes div { font-size: 12px; padding: 10px 6px; }
+}

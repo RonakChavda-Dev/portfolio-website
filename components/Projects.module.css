@@ -77,7 +77,9 @@
 .more .name { font-size: 18px; }
 
 @media (max-width: 860px) {
-  .feature { grid-template-columns: 1fr; padding-top: 140px; }
+  .feature { grid-template-columns: 1fr; gap: 26px; padding-top: 104px; }
+  .badge { width: 80px; height: 80px; top: 18px; right: 18px; }
+  .badge text { font-size: 13px; }
   .term { font-size: 12.5px; transform: none; margin-top: 0; }
   .listHead { display: none; }
   .row { grid-template-columns: 40px 1fr 44px; padding: 20px 6px; }
