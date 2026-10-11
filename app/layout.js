@@ -39,14 +39,14 @@ export const metadata = {
     siteName: "Ronak Chavda",
     title: "Ronak Chavda | Developer",
     description: "Automation, agentic AI and websites. Based in Gujarat, India.",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Ronak Chavda, Developer" }],
+    images: [{ url: "/og-image.png?v=2", width: 1200, height: 630, alt: "Ronak Chavda, Developer" }],
   },
   twitter: {
     card: "summary_large_image",
     creator: "@RonakChavda_Dev",
     title: "Ronak Chavda | Developer",
     description: "Automation, agentic AI and websites.",
-    images: ["/og-image.png"],
+    images: ["/og-image.png?v=2"],
   },
 };
 
