@@ -15,6 +15,7 @@ export const socials = [
   { name: "LinkedIn", handle: "Ronak Chavda", url: "https://www.linkedin.com/in/ronak-chavda-903056416/", icon: "linkedin" },
   { name: "Instagram", handle: "@ronak_chavda_dev", url: "https://www.instagram.com/ronak_chavda_dev/", icon: "instagram" },
   { name: "GitHub", handle: "RonakChavda-Dev", url: "https://github.com/RonakChavda-Dev", icon: "github" },
+  { name: "Discord", handle: "ronak_chavda_dev", url: "https://discord.com/users/1491278430774366208", icon: "discord" },
 ];
 
 export const navLinks = [
@@ -135,6 +136,26 @@ export const projects = [
   },
 ];
 
+/* ---------- What clients say ---------- */
+// "stars" is out of 5. "note" is a small line under the name (optional).
+export const testimonials = [
+  {
+    name: "Shadow",
+    note: "Goes by his gamer tag, keeps his real name private",
+    role: "Minecraft SMP server owner",
+    project: "Server hub website",
+    stars: 5,
+    quote: "Ronak is an excellent developer! He built a custom website for my Minecraft SMP server and went far beyond what I expected. He took a rough idea and turned it into a *real hub*: easy to get around, with live server tracking built right in. If you need a reliable frontend or web app developer who actually delivers on quality, Ronak is your guy.",
+  },
+  {
+    name: "Kaushal Devarasetty",
+    role: "Portfolio website client",
+    project: "Personal portfolio",
+    stars: 5,
+    quote: "Ronak did an absolutely fantastic job on my portfolio website. The whole process was quick and impressive: he understood my vision straight away and turned it into a beautiful, professional site in *no time.* The design, the attention to detail and the overall polish all went beyond what I hoped for. I really appreciate his dedication and technical skill. If you want a developer who delivers outstanding results without cutting corners, I highly recommend Ronak.",
+  },
+];
+
 /* ---------- About me ---------- */
 export const about = {
   title: "Just a programmer who hates doing things *twice.*",
@@ -170,6 +191,6 @@ export const faq = [
   },
   {
     q: "How can I reach you?",
-    a: "Send me an email or a message on X, LinkedIn or Instagram. The links are just below.",
+    a: "Send me an email or a message on X, LinkedIn, Instagram or Discord. The links are just below.",
   },
 ];

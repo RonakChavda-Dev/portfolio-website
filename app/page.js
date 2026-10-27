@@ -10,6 +10,7 @@ import Services from "@/components/Services";
 import Ribbons from "@/components/Ribbons";
 import Process from "@/components/Process";
 import Projects from "@/components/Projects";
+import Testimonials from "@/components/Testimonials";
 import About from "@/components/About";
 import Faq from "@/components/Faq";
 import Contact from "@/components/Contact";
@@ -30,6 +31,7 @@ export default function Home() {
         <Ribbons />
         <Process />
         <Projects />
+        <Testimonials />
         <About />
         <Faq />
         <Contact />
