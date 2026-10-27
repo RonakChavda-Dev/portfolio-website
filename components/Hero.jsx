@@ -3,6 +3,7 @@
 import { hero, person } from "@/data/site";
 import Fancy from "./Fancy";
 import Icon from "./Icons";
+import Bats from "./Bats";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
@@ -11,6 +12,8 @@ export default function Hero() {
       <div className="wrap">
         <div className={styles.card}>
           <div className={styles.glow} aria-hidden="true" />
+          {/* 🎃 Halloween: a few bats fly across once. Remove after Halloween. */}
+          <Bats />
 
           <div className={styles.copy}>
             <p className={styles.hello}>{hero.hello}</p>
@@ -31,14 +34,17 @@ export default function Hero() {
 
             <span className={`${styles.float} ${styles.f1}`}>{hero.floatTags[0]}</span>
             <span className={`${styles.float} ${styles.f2}`}>{hero.floatTags[1]}</span>
+            {hero.halloweenTag && <span className={`${styles.float} ${styles.f3}`}>{hero.halloweenTag}</span>}
 
             {/* Small spinning circle with words */}
             <span className={styles.badge} aria-hidden="true">
               <svg viewBox="0 0 100 100">
                 <defs><path id="heroCircle" d="M50 50 m-36 0 a36 36 0 1 1 72 0 a36 36 0 1 1 -72 0" /></defs>
-                <text><textPath href="#heroCircle">{hero.badge}</textPath></text>
+                {/* textLength = the circle's length (2 × π × 36), so the words always fit all the way round */}
+                <text><textPath href="#heroCircle" textLength="226" lengthAdjust="spacing">{hero.badge}</textPath></text>
               </svg>
-              <Icon name="spark" />
+              {/* 🎃 Halloween: a pumpkin in the middle. Normal one: <Icon name="spark" /> */}
+              <Icon name="pumpkin" className={styles.pumpkin} />
             </span>
 
           </div>

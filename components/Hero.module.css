@@ -69,6 +69,8 @@
   animation: bob 5s ease-in-out infinite;
 }
 .f1 { --rot: -10deg; transform: rotate(-10deg); top: 26%; left: -8%; }
+/* 🎃 Halloween tag, orange. Remove after Halloween. */
+.f3 { --rot: -6deg; transform: rotate(-6deg); bottom: 14%; left: -2%; background: #ff8a3d; color: #1a0f05; animation-delay: -1.2s; }
 .f2 { --rot: 8deg; transform: rotate(8deg); top: 50%; right: -12%; background: var(--lime); animation-delay: -2.5s; }
 
 /* ----- Spinning badge ----- */
@@ -78,8 +80,10 @@
   display: grid; place-items: center;
 }
 .badge svg { position: absolute; inset: 0; width: 100%; height: 100%; animation: spin 16s linear infinite; }
-.badge text { font: 600 9.5px var(--f-sans); letter-spacing: 0.14em; fill: rgba(255, 255, 255, 0.8); }
+.badge text { font: 600 9.5px var(--f-sans); letter-spacing: 0.12em; fill: rgba(255, 255, 255, 0.8); }
 .badge > svg:last-child { position: static; width: 20px; height: 20px; animation: spin 8s linear infinite reverse; }
+/* 🎃 Halloween: the pumpkin stays upright and orange. Remove after Halloween. */
+.badge > svg.pumpkin { width: 26px; height: 26px; color: #ff8a3d; animation: none; }
 
 /* ----- Glass box ----- */
 .builds {
@@ -112,6 +116,7 @@
   .glow { right: 50%; transform: translateX(50%); top: -120px; width: 480px; height: 480px; animation: none; opacity: 0.8; }
   .f1 { left: -14%; }
   .f2 { right: -16%; }
+  .f3 { left: -20%; bottom: 20%; }
   .badge { width: 78px; height: 78px; right: -26px; }
   .builds { display: none; }
   .stats { width: 100%; justify-content: space-between; gap: 14px; }
