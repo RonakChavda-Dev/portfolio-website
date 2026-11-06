@@ -34,10 +34,7 @@ export const hero = {
   buildsWith: ["Python", "JavaScript", "React", "Next.js", "Django", "Git"],
   floatTags: ["AI agents", "Automation"],
   // Words on the small spinning circle next to the photo
-  // 🎃 Halloween version. Normal one: "AI AGENTS • AUTOMATION • WEBSITES • "
-  badge: "• HAPPY HALLOWEEN • TRICK OR TREAT ",
-  // 🎃 Halloween: an extra orange tag by the photo. Remove after Halloween.
-  halloweenTag: "Happy Halloween 🎃",
+  badge: "AI AGENTS • AUTOMATION • WEBSITES • ",
 };
 
 // The grey moving strip under the dark card
