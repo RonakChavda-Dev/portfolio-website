@@ -7,7 +7,6 @@ import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import Intro from "@/components/Intro";
 import Services from "@/components/Services";
-import Ribbons from "@/components/Ribbons";
 import Process from "@/components/Process";
 import Projects from "@/components/Projects";
 import Testimonials from "@/components/Testimonials";
@@ -28,7 +27,6 @@ export default function Home() {
       <main>
         <Intro />
         <Services />
-        <Ribbons />
         <Process />
         <Projects />
         <Testimonials />

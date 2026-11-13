@@ -163,16 +163,18 @@ em, .serif {
 
 /* ===== Things that slide in when you scroll =====
    Only hidden once JavaScript is running, so the page never stays blank. */
+/* Each item starts blurred and sharpens as it moves into place, like motion blur */
 .js [data-reveal] {
   opacity: 0;
   transform: translateY(36px);
-  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  filter: blur(12px);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease), filter 0.9s var(--ease);
   transition-delay: var(--d, 0s);
 }
 .js [data-reveal="zoom"] { transform: scale(0.94); }
 .js [data-reveal="left"] { transform: translateX(-40px); }
 .js [data-reveal="right"] { transform: translateX(40px); }
-.js [data-reveal][data-shown], .js [data-reveal].in { opacity: 1; transform: none; }
+.js [data-reveal][data-shown], .js [data-reveal].in { opacity: 1; transform: none; filter: none; }
 
 /* Shared animations */
 @keyframes ping { 70% { box-shadow: 0 0 0 9px rgba(200, 244, 58, 0); } 100% { box-shadow: 0 0 0 0 rgba(200, 244, 58, 0); } }
@@ -183,7 +185,7 @@ em, .serif {
 /* People who turn off motion in their computer settings get a still page */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
-  .js [data-reveal] { opacity: 1; transform: none; }
+  .js [data-reveal] { opacity: 1; transform: none; filter: none; }
 }
 
 /* ===== Phones and small tablets =====
@@ -192,6 +194,3 @@ em, .serif {
 @media (max-width: 900px) {
   html, body { overflow-x: hidden; max-width: 100%; }
 }
-
-/* "How I work" starts right under the ribbons, so its top edge is straight */
-.band.band-flat-top { border-top-left-radius: 0; border-top-right-radius: 0; padding-top: clamp(50px, 7vw, 100px); }

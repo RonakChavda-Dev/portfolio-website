@@ -86,12 +86,6 @@ export const services = [
   },
 ];
 
-// The two crossing moving bands
-export const ribbons = {
-  one: ["Turning slow work into code", "Agentic AI", "Automation", "Websites"],
-  two: ["Ronak Chavda", "Developer", "Gujarat, India", "Always building"],
-};
-
 /* ---------- How I work ---------- */
 export const steps = [
   { title: "Understand", text: "We talk through the task, what slows you down, and what \"done\" looks like." },

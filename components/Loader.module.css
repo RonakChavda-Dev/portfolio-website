@@ -4,7 +4,7 @@
   transition: transform 0.9s cubic-bezier(0.7, 0, 0.2, 1);
 }
 .logo { width: 64px; animation: pop 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
-@keyframes pop { from { opacity: 0; transform: scale(0.6) rotate(-20deg); } }
+@keyframes pop { from { opacity: 0; transform: scale(0.6) rotate(-20deg); filter: blur(10px); } }
 .done { transform: translateY(-100%); pointer-events: none; }
 .done .logo { opacity: 0; transition: opacity 0.3s; }
 @media (prefers-reduced-motion: reduce) { .loader { display: none; } }
